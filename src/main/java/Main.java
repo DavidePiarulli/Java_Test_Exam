@@ -1,14 +1,17 @@
-import com.exam.domain.*;
+import com.exam.domain.AcquirentePremium;
+import com.exam.domain.AcquirenteStandard;
+import com.exam.domain.Lotteria;
+import com.exam.domain.Vincita;
 import com.exam.exception.NoWinnerException;
 
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Main {
 
-    public static void main(String[] args) throws NoWinnerException {
+    private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
+
+    public static void main(String[] args) {
 
         AcquirenteStandard acquirenteStandard1 = new AcquirenteStandard("Gianni", "Morandi",25.0);
         AcquirenteStandard acquirenteStandard2 = new AcquirenteStandard("Gigi", "Morandi", 11.0);
@@ -32,7 +35,7 @@ public class Main {
         try {
             lotteria1.controlloVincitore(vincita1, lotteria1.getListaAcquirentiStandard(), lotteria1.getListaAcquirentiPremium());
         } catch (NoWinnerException e) {
-            System.out.println(e.getMessage());
+            LOGGER.log(Level.INFO, e.getMessage());
         }
 
     }

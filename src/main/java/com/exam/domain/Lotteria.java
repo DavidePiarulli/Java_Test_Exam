@@ -7,10 +7,14 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Lotteria {
+
+    private static final Logger LOGGER = Logger.getLogger(Lotteria.class.getName());
 
     private Set<Acquirente> listaAcquirentiStandard = new LinkedHashSet<>();
     private Set<Acquirente> listaAcquirentiPremium = new LinkedHashSet<>();
@@ -53,7 +57,7 @@ public class Lotteria {
                 .findFirst();
 
         if (winner.isPresent()) {
-            System.out.println("Abbiamo un vincitore: " + winner.get());
+            LOGGER.log(Level.INFO, "Abbiamo un vincitore: {}" , winner.get());
             return winner.get();
         }
 
